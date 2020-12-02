@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Angular-Project';
+
+  search = ():void => {
+    alert("working")
+  }
 }

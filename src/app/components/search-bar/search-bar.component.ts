@@ -1,20 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.css']
 })
-export class SearchBarComponent implements OnInit {
+export class SearchBarComponent {
   country: string = "";
 
-  constructor() { }
+  @Input() submit: any = () => "";
 
-  ngOnInit(): void {
-  }
-
-  onSubmit() {
-    
+  search() {
+		localStorage.setItem("loading", "true");
+		localStorage.setItem("country keyword", `${this.country}`);
+    this.submit();
   }
 
 }
