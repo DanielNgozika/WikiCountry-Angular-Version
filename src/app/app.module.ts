@@ -8,13 +8,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { SearchResultComponent } from './components/search-result/search-result.component';
 import { EachResultComponent } from './components/each-result/each-result.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchBarComponent,
     SearchResultComponent,
-    EachResultComponent
+    EachResultComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
