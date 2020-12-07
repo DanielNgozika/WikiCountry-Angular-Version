@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent {
-  country: string = "";
+  country: any = localStorage.getItem("country keyword");
 
   @Input() submit: any = () => "";
 
