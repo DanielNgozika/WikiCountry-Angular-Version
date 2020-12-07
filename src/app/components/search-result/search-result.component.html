@@ -5,4 +5,7 @@
 	<p class="resultIndicator">
 		Showing results for <strong>{{country}}</strong>
 	</p>
+	<p *ngIf='isLoading()'>Loading...</p>
+	<p *ngIf='(result === null || result.length === 0)  && !isLoading()'>No results found.</p>
+	<app-each-result *ngIf='!isLoading() && result' [result]="result"></app-each-result>
 </main>
