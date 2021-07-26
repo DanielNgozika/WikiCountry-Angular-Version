@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Select, Store } from "@ngxs/store";
+import { Observable } from 'rxjs'
+import { CountryState } from "../../State/country.state";
 import { CountryServiceService } from "../../services/country-service.service"
 
 @Component({
@@ -7,12 +10,18 @@ import { CountryServiceService } from "../../services/country-service.service"
   styleUrls: ['./search-result.component.css']
 })
 export class SearchResultComponent implements OnInit {
+  // country: Observable<string>;
+
+  country$: Observable<string>
+  // @Select(CountryState.) country$: Observable<any>;
 
   result: any = null;
   
-  constructor(private countryService: CountryServiceService ) { }
+  constructor(private countryService: CountryServiceService, private store: Store ) { 
+    this.country$ = this.store.select(state => state.country)
+  }
   
-  country: any = localStorage.getItem("country keyword")
+  // country: any = localStorage.getItem("country keyword")
 
   ngOnInit(): void {
     this.getCountry();
@@ -21,7 +30,7 @@ export class SearchResultComponent implements OnInit {
   getCountry() {
     this.countryService.getCountry(localStorage.getItem("country keyword")).subscribe(country => { this.result = country[0] });
     localStorage.setItem("loading", "false");
-    this.country = localStorage.getItem("country keyword");
+    // this.country$ = localStorage.getItem("country keyword");
   }
 
   isLoading() {
